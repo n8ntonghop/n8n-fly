@@ -1,6 +1,6 @@
-app = "n8n-fly-dkaljg" # <-- Sửa tên app đúng với app thật trên Fly
+app = "n8n-fly-dkaljg"
 
-primary_region = "sin" # Singapore, ok gần VN
+primary_region = "sin"
 
 [env]
   N8N_HOST = "n8n-fly-dkaljg.fly.dev"
@@ -19,6 +19,6 @@ primary_region = "sin" # Singapore, ok gần VN
   auto_start_machines = true
   min_machines_running = 1
 
-[mounts]
+[[mounts]]
   source = "n8n_data"
   destination = "/home/node/.n8n"
