@@ -1,0 +1,11 @@
+{
+  "name": "n8n-fly",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p packages/nodes-custom/n8n-nodes-debounce"
+  },
+  "dependencies": {
+    "n8n": "^1.44.0",
+    "n8n-nodes-debounce": "file:./packages/nodes-custom/n8n-nodes-debounce"
+  }
+}
