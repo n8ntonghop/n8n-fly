@@ -24,4 +24,4 @@ primary_region = "sin"
   destination = "/home/node/.n8n"
 
 [build]
-  image = "docker.io/n8nio/n8n:latest"
+  dockerfile = "Dockerfile"
