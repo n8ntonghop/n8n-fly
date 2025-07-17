@@ -1,10 +1,10 @@
-# Sử dụng image chính thức của n8n
 FROM n8nio/n8n
 
-# Ép biến môi trường cần thiết (có thể override bằng fly.toml)
+# Env không quan trọng lắm vì fly.toml override, cứ giữ cũng được
 ENV N8N_BASIC_AUTH_ACTIVE=true
 ENV N8N_BASIC_AUTH_USER=admin
 ENV N8N_BASIC_AUTH_PASSWORD=123456
 
-# Quan trọng: ép n8n listen 0.0.0.0 để fly proxy truy cập được
-CMD ["n8n", "start", "--tunnel", "--host", "0.0.0.0"]
+# Quan trọng: ép n8n chạy với host 0.0.0.0
+ENTRYPOINT ["n8n"]
+CMD ["start", "--tunnel", "--host", "0.0.0.0"]
