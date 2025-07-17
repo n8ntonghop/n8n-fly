@@ -1,15 +1,23 @@
-app = "n8n-on-fly"
-primary_region = "sin"
+# fly.toml app configuration file generated for n8n-fly-thang on 2025-07-17T03:53:50Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
-[env]
-  N8N_BASIC_AUTH_ACTIVE = "true"
-  N8N_BASIC_AUTH_USER = "admin"
-  N8N_BASIC_AUTH_PASSWORD = "123456"
-  N8N_HOST = "n8n.fly.dev"
-  WEBHOOK_URL = "https://n8n.fly.dev"
+app = 'n8n-fly-thang'
+primary_region = 'cdg'
+
+[build]
 
 [http_service]
   internal_port = 5678
   force_https = true
+  auto_stop_machines = 'stop'
   auto_start_machines = true
-  min_machines_running = 1
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+  memory_mb = 1024
