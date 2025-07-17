@@ -1,14 +1,19 @@
-FROM n8nio/n8n
+FROM node:18
 
-# Cài đặt gói nodes tùy chỉnh
-RUN npm install -g n8n-nodes-debounce
+# Cài thêm thư viện build cần thiết
+RUN apt-get update && apt-get install -y python3 make g++
 
-# Trỏ đến thư mục chứa nodes custom
-ENV N8N_CUSTOM_EXTENSIONS="/usr/local/lib/node_modules"
+# Tạo thư mục làm việc
+WORKDIR /app
 
-# Thiết lập biến môi trường
-ENV N8N_BASIC_AUTH_ACTIVE=true
-ENV N8N_BASIC_AUTH_USER=admin
-ENV N8N_BASIC_AUTH_PASSWORD=123456
-ENV N8N_HOST=n8n-fly-thang.fly.dev
-ENV WEBHOOK_URL=https://n8n-fly-thang.fly.dev
+# Copy toàn bộ source từ repo
+COPY . .
+
+# Cài đặt các package trong repo (bao gồm cả custom node)
+RUN npm install
+
+# Build custom node nếu cần (nếu dùng TypeScript)
+RUN npm run build || true
+
+# Chạy n8n
+CMD ["npx", "n8n"]
