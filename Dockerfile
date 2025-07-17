@@ -1,7 +1,10 @@
 FROM n8nio/n8n
 
-ENV N8N_HOST="n8n.fly.dev"
-ENV WEBHOOK_URL="https://n8n.fly.dev"
+ENV N8N_HOST="0.0.0.0"
+ENV WEBHOOK_URL="https://n8n-fly-dkaljg.fly.dev/"
 ENV N8N_BASIC_AUTH_ACTIVE=true
 ENV N8N_BASIC_AUTH_USER=admin
 ENV N8N_BASIC_AUTH_PASSWORD=123456
+
+# Tốt nhất thêm EXPOSE để Docker biết cổng
+EXPOSE 5678
