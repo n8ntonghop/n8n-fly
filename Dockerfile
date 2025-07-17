@@ -1,7 +1,9 @@
-FROM n8nio/n8n
+FROM n8nio/n8n:latest
 
-ENV N8N_HOST="n8n.fly.dev"
-ENV WEBHOOK_URL="https://n8n.fly.dev"
+# Cài đặt timezone nếu cần
+ENV TZ=Asia/Ho_Chi_Minh
+
+# Thiết lập các biến môi trường (sẽ override bằng fly.toml nếu cần)
 ENV N8N_BASIC_AUTH_ACTIVE=true
 ENV N8N_BASIC_AUTH_USER=admin
 ENV N8N_BASIC_AUTH_PASSWORD=123456
