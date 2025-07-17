@@ -1,32 +1,15 @@
-app = "n8n-fly-8p503a"
+app = "n8n-on-fly"
 primary_region = "sin"
 
-[build]
-image = "n8nio/n8n"  # Dùng image chính thức
-
 [env]
-N8N_BASIC_AUTH_ACTIVE = "true"
-N8N_BASIC_AUTH_USER = "admin"
-N8N_BASIC_AUTH_PASSWORD = "yourpassword"
-N8N_HOST = "n8n-fly-8p503a.fly.dev"
-N8N_PORT = "5678"
-WEBHOOK_URL = "https://n8n-fly-8p503a.fly.dev/"
+  N8N_BASIC_AUTH_ACTIVE = "true"
+  N8N_BASIC_AUTH_USER = "admin"
+  N8N_BASIC_AUTH_PASSWORD = "123456"
+  N8N_HOST = "n8n.fly.dev"
+  WEBHOOK_URL = "https://n8n.fly.dev"
 
-[mounts]
-source = "n8n_data"
-destination = "/home/node/.n8n"
-
-[[services]]
-internal_port = 5678
-protocol = "tcp"
-
-  [[services.ports]]
-  handlers = ["http"]
-  port = 80
-
-  [[services.ports]]
-  handlers = ["tls", "http"]
-  port = 443
-[mounts]
-  source = "n8n_data"
-  destination = "/home/node/.n8n"
+[http_service]
+  internal_port = 5678
+  force_https = true
+  auto_start_machines = true
+  min_machines_running = 1
