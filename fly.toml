@@ -27,3 +27,6 @@ protocol = "tcp"
   [[services.ports]]
   handlers = ["tls", "http"]
   port = 443
+[mounts]
+  source = "n8n_data"
+  destination = "/home/node/.n8n"
