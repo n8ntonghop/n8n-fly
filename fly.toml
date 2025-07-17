@@ -1,19 +1,16 @@
-app = "n8n-fly-dukh6a"
+app = "n8n-fly"
 primary_region = "sin"
 
 [env]
+  N8N_HOST = "n8n.fly.dev"
+  WEBHOOK_URL = "https://n8n.fly.dev"
   N8N_BASIC_AUTH_ACTIVE = "true"
   N8N_BASIC_AUTH_USER = "admin"
   N8N_BASIC_AUTH_PASSWORD = "123456"
-  N8N_HOST = "n8n.fly.dev"
-  WEBHOOK_URL = "https://n8n.fly.dev"
 
 [http_service]
   internal_port = 5678
   force_https = true
+  auto_stop_machines = true
   auto_start_machines = true
   min_machines_running = 1
-
-[mounts]
-  source = "n8n_data"
-  destination = "/home/node/.n8n"
